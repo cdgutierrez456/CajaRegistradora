@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Producto } from 'src/app/models/producto.models';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Producto } from '../../models/producto.models';
 
 @Component({
   selector: 'app-lista-productos',
@@ -11,9 +11,17 @@ export class ListaProductosComponent implements OnInit {
   @Input() titulo: string;
   @Input() productos: Producto[];
 
-  constructor() { }
+  @Output() productoSeleccionado: EventEmitter<Producto>;
+
+  constructor() { 
+    this.productoSeleccionado = new EventEmitter();
+  }
 
   ngOnInit(): void {
+  }
+
+  onClick(pProducto) {
+    this.productoSeleccionado.emit(pProducto);
   }
 
 }
