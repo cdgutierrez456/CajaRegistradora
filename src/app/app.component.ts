@@ -10,8 +10,12 @@ export class AppComponent {
   
   arrComida: Producto[];
   arrBebida: Producto[];
+  productosSeleccionados: Producto[];
 
   constructor() {
+
+    this.productosSeleccionados = [];
+
     this.arrComida = [
       new Producto('Bayas', 'https://cdn.pixabay.com/photo/2010/12/13/10/05/berries-2277_960_720.jpg', 5000),
       new Producto('Fresas', 'https://cdn.pixabay.com/photo/2018/04/29/11/54/strawberries-3359755_960_720.jpg', 3500),
@@ -25,6 +29,10 @@ export class AppComponent {
       new Producto('Cerveza', 'https://cdn.pixabay.com/photo/2015/09/24/20/36/beer-barrel-956322_960_720.jpg', 23000),
       new Producto('Cockteles', 'https://cdn.pixabay.com/photo/2016/11/19/13/53/margarita-1839361_960_720.jpg', 30000)
     ]
+  }
+
+  onProductoSeleccionado($event) {
+    this.productosSeleccionados.push($event);
   }
 
 }
